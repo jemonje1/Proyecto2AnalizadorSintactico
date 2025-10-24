@@ -1,0 +1,1 @@
+[SINTAX] L1 C1: No hay producción para [Prog] con '$'

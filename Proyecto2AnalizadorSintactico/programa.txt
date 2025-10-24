@@ -1,0 +1,40 @@
+// Programa válido que cubre toda la gramática
+/* Comentario de bloque cerrado: el lexer debe ignorarlo correctamente */
+class Demo {
+    // Miembro: declaración de variable
+    int x;
+
+    // Miembro: método sin parámetros
+    void ping() { return; }
+
+    // Miembro: método con parámetros y asignaciones/expresiones
+    int sum(int a, int b) {
+        int r;
+        r = a + b * (a - 1);
+        return r;
+    }
+
+    // Uso de relacionales: ==, < y >
+    int cmpEq(int a, int b) { return a == b; }
+    int cmpLt(int a, int b) { return a <  b; }
+    int cmpGt(int a, int b) { return a >  b; }
+
+    // Llamadas a función como Statement y dentro de Expresiones (FactorP)
+    void log(int a, int b) { return; }
+
+    void test() {
+        int y;
+        y = sum(2, 3);
+        log(y, 5);
+        y = (y + 1) / 2;
+        y = sum(y, cmpGt(10, 3));  // llamada dentro de una expresión
+        y = sum(1, sum(2, 3));     // anidación de llamadas
+        y = sum( ping(), 4 );      // ping() retorna void en semántica real, pero nuestra gramática no hace type-checking
+        return;
+    }
+
+    // Expresión con paréntesis y relacional
+    int complex() {
+        return (1 + 2) * 3 > 5;
+    }
+}
